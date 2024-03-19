@@ -1,7 +1,7 @@
 # React Native（Expo） 版 WanAndroid 客户端
 
 ## 简介
-Expo WanAndroid基于React Native 0.71版本和expo 50，网络请求和状态管理使用最新版本redux toolkit。APP设计参考[RN_WanAndroid](https://github.com/aijason/RN_WanAndroid)
+Expo WanAndroid基于React Native 0.73版本和expo 50，网络请求和状态管理使用最新版本redux toolkit。APP设计参考[RN_WanAndroid](https://github.com/aijason/RN_WanAndroid)
 
 ## 交互设计原则
 GET接口指示：
@@ -40,6 +40,15 @@ POST接口指示：
 * 多语言切换功能；
 * 我的积分明细；
 * 关于模块。
+
+## 部分实现技术点
+### 国际化
+国际化主要依赖i18n-js库，主要就是对其设置locale，配置locale对应的翻译文件。基本的使用是用原文为key，取得对应的译文。i18n-js本身还支持插值、scope以及其他高级的功能。本项目只使用简单的映射以及插值功能。
+
+为了在输入代码的时候得到编译器提示，我们先创建了一个`LanguageMapper`对象，它是一个字面量对象，键是你给需要本地化的文本指定的助记名，一般采用"位置+功能"、“功能+内容”之类的组合，例如"menu_home","toast_pwd_empty"等，这个可以随意指定规则。值一般是英文原文，当然也可以是其他文本。鉴于客户端范围文件比较常见的格式是"英文:译文"，因此这里设为英文原文。然后我们创建一个`LanguageResource`类型，该类型以`LanguageMapper`类型的值作为键。我们为每种语言创建一个该类型的对象，并且将翻译映射对作为其键值。
+
+然后我们实现一个以`LanguageMapper`键作为参数的翻译快捷方法，这样我们每次调用这个方法时，既可以直接输入助记名，也可以通过`LanguageMapper`来访问这个助记名，编译器都会为我们提供代码补全提示，如图所示：
+![](/screenshots/translation.png)
 
 ## 已知问题
 * 同一篇文章在不同位置的收藏状态不同步

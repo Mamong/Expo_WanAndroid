@@ -24,7 +24,6 @@ const zhhans:LanguageResource = {
     'Share': '分享',
     'Settings': '设置',
     'Logout': '退出登录',
-    // 'xxxxx':'xxxxx',
     'Share WanAndroid application developed with react native, Click to download:%{url}':'分享一个使用React Native开发的玩安卓应用, 点击下载：%{url}',
     'Tips': '提示',
     'Cancel': '取消',

@@ -24,7 +24,6 @@ const zhhant: LanguageResource = {
   'Share': '分享',
   'Settings': '設定',
   'Logout': '登出',
-  // 'xxxxx':'xxxxx',
   'Share WanAndroid application developed with react native, Click to download:%{url}':'分享一個使用React Native開發的玩安卓應用，點擊下載：%{url}',
   'Tips': '提示',
   'Cancel': '取消',

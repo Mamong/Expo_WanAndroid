@@ -22,7 +22,6 @@ const LanguageMapper = {
     menu_share: 'Share',
     menu_settings: 'Settings',
     menu_logout: 'Logout',
-    // share_app_desc:"xxxxx",
     share_app_desc: 'Share WanAndroid application developed with react native, Click to download:%{url}',
     tips: 'Tips',
     cancel: 'Cancel',
