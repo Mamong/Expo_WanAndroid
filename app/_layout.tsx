@@ -82,6 +82,7 @@ function RootLayoutNav() {
 }
 
 async function initApp() {
+  //https://github.com/react-native-async-storage/async-storage/issues/1056
   // https://github.com/supabase/supabase-js/issues/786
   if (Platform.OS != "web") {
     const language = await AuthUtil.getAppLanguage();

@@ -32,11 +32,17 @@ export default function ArticleItemRow({
         }}>
             <View style={styles.itemWrapper}>
                 <View style={styles.itemLeftWrapper}>
-                    <Text numberOfLines={2}>
-                        {item.isTop && <View style={styles.titleWrapper}><View style={styles.tabItemWrapper}><Text style={styles.topBadge}>置顶</Text></View></View>}<Text style={styles.title}>
+                    {item.isTop &&
+                        <View style={styles.tabItemWrapper}>
+                            <Text style={styles.topBadge}>置顶</Text>
+                        </View>}
+                    {item.isTop ?
+                        <Text style={styles.title} numberOfLines={2}>
+                            &emsp;&emsp;&emsp;{title}
+                        </Text> :
+                        <Text style={styles.title} numberOfLines={2}>
                             {title}
-                        </Text>
-                    </Text>
+                        </Text>}
                     <Text numberOfLines={3} style={styles.desc}>
                         {item.desc}
                     </Text>
@@ -116,19 +122,17 @@ const styles = StyleSheet.create({
         flex: 1,
         width: dp(520),
         justifyContent: 'space-between',
+        position: "relative",
     },
     itemRightWrapper: {
         justifyContent: 'center',
-    },
-    titleWrapper: {
-        paddingRight: dp(8),
-        // backgroundColor:'green'
     },
     topBadge: {
         fontSize: dp(24),
         color: '#fff',
     },
     tabItemWrapper: {
+        position: "absolute",
         paddingHorizontal: dp(8),
         paddingVertical: dp(4),
         borderRadius: dp(10),
@@ -144,6 +148,7 @@ const styles = StyleSheet.create({
         color: Color.TEXT_MAIN,
         fontWeight: 'bold',
         maxWidth: dp(520),
+        lineHeight:dp(36),
         // backgroundColor:'yellow'
     },
     desc: {
