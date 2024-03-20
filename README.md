@@ -82,7 +82,6 @@ getArticleList: builder.query<ListResponse<Article>, number>({
 
 ## 已知问题
 * 同一篇文章在不同位置的收藏状态不同步
-* 置顶文章收藏不立即更新，需要刷新
 
 
 ## 声明

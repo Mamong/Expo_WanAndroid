@@ -36,7 +36,7 @@ const renderHeader = () => {
     </>
   )
 }
-const keyExtractor = (item:Article) => item.id.toString()
+const keyExtractor = (item:Article) => (item.isTop?'top-':'') + item.id.toString()
 
 export default function TabHomeScreen() {
   const currentPage = useRef(0)
@@ -51,7 +51,7 @@ export default function TabHomeScreen() {
     error,
   }] = useLazyGetArticleListQuery()
 
-  const {data:tops,refetch} = useGetTopArticleListQuery()
+  // const {data:tops,refetch} = useGetTopArticleListQuery()
 
   const isLogin = useAppSelector((state) => state.user.isLogin)
   const [collectArticle, { isLoading: isCollecting }] = useCollectArticleMutation()
@@ -75,7 +75,7 @@ export default function TabHomeScreen() {
   const onRefresh = async () => {
     console.log("onRefresh")
     fetchingPage.current = 0
-    await refetch()
+    // await refetch()
     await fetchArticles(fetchingPage.current)
   }
 
@@ -120,7 +120,8 @@ export default function TabHomeScreen() {
           error={error && uniformError(error)}
 
           //cause rerender
-          data={[...tops??[],...data?.datas??[]]}
+          // data={[...tops??[],...data?.datas??[]]}
+          data={data?.datas}
           keyExtractor={keyExtractor}
           initialNumToRender={10}
           renderItem={renderItem}
